@@ -73,14 +73,6 @@ class DDPG:
         self.actor = STConv(30, 1, 128, 1, 3, 10).to(device)
         self.actor.load_state_dict(torch.load('best_model_GTrans_yuanshi.pt'))
         self.critic = QValueNet(action_dim, hidden_dim, out_dim=1, factor=2).to(device)
-        #.target_actor = actor_net(device).to(device)
-        #self.target_critic = QValueNet(action_dim, hidden_dim, out_dim=1, factor=2).to(device)
-
-        # 初始化目标价值网络并设置和价值网络相同的参数
-        #self.target_critic.load_state_dict(self.critic.state_dict())
-        # 初始化目标策略网络并设置和策略相同的参数
-        #self.target_actor.load_state_dict(self.actor.state_dict())
-
         self.actor_optimizer = torch.optim.Adam([{'params': self.actor.params}], lr=actor_lr)
         self.critic_optimizer = torch.optim.Adam(self.critic.parameters(), lr=critic_lr)
         self.gamma = gamma
