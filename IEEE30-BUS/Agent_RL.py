@@ -66,8 +66,7 @@ class QValueNet(torch.nn.Module):
         return x
 
 
-class DDPG:
-    ''' DDPG算法 '''
+class BCERPG:
 
     def __init__(self, state_dim, hidden_dim, action_dim,  actor_lr, critic_lr, device, tau = 0.005, gamma = 0.98,sigma = 0.01):
         self.actor = STConv(30, 1, 128, 1, 3, 10).to(device)
@@ -205,7 +204,7 @@ gamma = 0.98
 actor_lr = 1e-5
 critic_lr = 0.001
 hidden_dim = 128
-agent = DDPG(state_dim, hidden_dim, action_dim, actor_lr, critic_lr, device)# def train():
+agent = BCERPG(state_dim, hidden_dim, action_dim, actor_lr, critic_lr, device)# def train():
 
 pd_factor, pmin_factor, pmax_factor, cost_factor = 1, 1, 1, 1e-3
 minimal_size = 3000
