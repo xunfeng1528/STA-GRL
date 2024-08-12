@@ -1,2 +1,2 @@
 # STA-GRL
-Code for the paper "Spatial-temporal attention graph reinforcement learning for Safety Constrained Unit Commitment Dispatch"
+Training code and model code for STA-GRL
